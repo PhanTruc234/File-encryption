@@ -118,7 +118,7 @@ export const useFileStore = create((set, get) => ({
             const salt = base64ToBuf(meta.data.meta.salt);
             const iv = base64ToBuf(meta.data.meta.iv);
 
-            // Download file
+            // tải file
             const raw = await fileService.downloadFile(id);
             if (!raw.data) {
                 return { ok: false, message: "Không thể tải tệp" };

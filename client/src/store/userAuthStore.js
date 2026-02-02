@@ -40,7 +40,6 @@ export const UserAuthStore = create((set, get) => ({
         set({ accessToken: null, user: null, loading: false });
         localStorage.removeItem("token");
         localStorage.removeItem("userLottery");
-        window.location.href = "/login";
     },
     signUp: async (fullName, email, password, captchaToken) => {
         try {
@@ -74,9 +73,12 @@ export const UserAuthStore = create((set, get) => ({
     logout: async () => {
         try {
             await userService.logout();
-            get().clearState()
+            get().clearState();
+            window.location.href = "/login";
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            get().clearState();
+            window.location.href = "/login";
         }
     },
     forgotPassword: async (email, captchaToken) => {

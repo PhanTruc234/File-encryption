@@ -176,8 +176,6 @@ class fileController {
                 console.log("OTP record not found for email:", decoded.email);
                 return res.status(400).json({ ok: false, message: "OTP không hợp lệ" });
             }
-
-            // Trim OTP nếu user copy có spaces
             const trimmedOtp = String(otp).trim();
             console.log("Trimmed OTP:", trimmedOtp, "Length:", trimmedOtp.length);
 
