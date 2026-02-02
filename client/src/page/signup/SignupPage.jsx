@@ -25,8 +25,9 @@ export default function SignupPage() {
         }
         try {
             const res = await signUp(fullName, email, password, captchaToken);
-            if (res?.status === 200) {
-                navigate("/login");
+            if (res?.status === 201) {
+                toast.success("Đăng kí thành công! Chuyển đến trang đăng nhập")
+                    navigate("/login")
             }
         } catch (err) {
             toast.error(err.message || "Đăng kí thất bại");
